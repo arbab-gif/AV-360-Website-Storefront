@@ -1,0 +1,224 @@
+.featured {
+  padding-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.featured__head {
+  margin-bottom: 2.25rem;
+}
+
+.featured__context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.75rem;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.featured__context strong {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.context-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--primary);
+  border-radius: var(--cut);
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--primary-ink);
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.context-chip:hover {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+/* Product grid: catalogue plates separated by hairlines */
+.featured__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.75rem, 1rem + 1.6vw, 2.75rem) clamp(1rem, 0.6rem + 1vw, 1.6rem);
+}
+
+.featured__cell {
+  animation: plate-in 380ms var(--ease) both;
+  animation-delay: calc(min(var(--d), 8) * 35ms);
+}
+
+@keyframes plate-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.item-card__media {
+  position: relative;
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+  border-radius: var(--round);
+  background: var(--stone);
+}
+
+.item-card:hover .item-card__media .smart-img {
+  transform: scale(1.04);
+}
+
+.item-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: 1rem;
+  border-top: 0;
+}
+
+.item-card__category {
+  color: var(--primary-ink);
+}
+
+.item-card__name {
+  margin-top: 0.35rem;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 48;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.item-card__detail {
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.wish-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 46px;
+  margin-top: auto;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--cut);
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.wish-toggle__icon {
+  font-size: 1.05rem;
+}
+
+.wish-toggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.wish-toggle.is-added {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.wish-toggle.is-added:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-ink);
+}
+
+.featured__empty {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 4rem 1rem;
+  border: 1px dashed var(--rule);
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.featured__note {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ink);
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+@media (max-width: 1199px) {
+  .featured__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899px) {
+  .featured__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 559px) {
+  .featured__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .item-card {
+    display: grid;
+    grid-template-columns: 40% minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .item-card__media {
+    aspect-ratio: auto;
+    min-height: 170px;
+  }
+
+  .item-card__media > .smart-img {
+    position: absolute;
+    inset: 0;
+  }
+
+  .item-card__body {
+    padding-top: 0;
+  }
+
+  .item-card__name {
+    font-size: 1.3rem;
+  }
+
+  .item-card__detail {
+    margin-bottom: 0.8rem;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .wish-toggle {
+    font-size: 0.82rem;
+    padding-inline: 0.5rem;
+  }
+}

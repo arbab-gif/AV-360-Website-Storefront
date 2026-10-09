@@ -1,0 +1,59 @@
+/*
+  AP360 — "the rental catalogue".
+  Layout concept: a printed rental-house catalogue. Stationery-grade display type,
+  item codes and quantities in mono, kraft hang-tags as the one recurring motif,
+  square-cut photographs, hairline rules instead of rounded cards.
+*/
+:root {
+  /* Palette — white page, charcoal ink, AP360 blue */
+  --linen: #ffffff;
+  --paper: #ffffff;
+  --mist: #f5f3ee;
+  --stone: #ece8e0;
+  --rule: #e0dbd1;
+  --ink: #1f1e1b;
+  --ink-soft: #57524a;
+  --primary: #00b2e3; /* brand primary */
+  --primary-hover: #009dca;
+  --primary-ink: #00739a; /* primary as text on white (AA contrast) */
+  --on-primary: #ffffff; /* text and icons on primary fills */
+  --night: #10181c; /* dark section ground */
+  --night-card: #18232a;
+  --night-rule: rgb(255 255 255 / 0.12);
+  --on-night: #ffffff;
+  --on-night-soft: #b9c3c8;
+  --kraft: #cdb68c;
+  --kraft-ink: #3d3220;
+
+  /* Type */
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --text: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --fs-hero: clamp(3.1rem, 1.2rem + 6.6vw, 7.6rem);
+  --fs-h2: clamp(2.3rem, 1.4rem + 3vw, 4rem);
+  --fs-h3: clamp(1.35rem, 1.15rem + 0.6vw, 1.7rem);
+  --fs-lead: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+  --fs-small: 0.875rem;
+  --fs-code: 0.74rem;
+
+  /* Space */
+  --gutter: clamp(1rem, 0.3rem + 2.8vw, 3rem);
+  --section-y: clamp(3.25rem, 2.25rem + 4vw, 6rem);
+  --nav-h: 72px;
+  --container: 1360px;
+  --cut: 10px; /* buttons, inputs, small controls */
+  --round: 16px; /* photos and cards */
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 220ms;
+
+  --focus: 0 0 0 2px var(--paper), 0 0 0 4px var(--primary-ink);
+}
+
+@media (max-width: 960px) {
+  :root {
+    --nav-h: 64px;
+  }
+}
