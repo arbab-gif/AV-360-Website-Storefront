@@ -171,20 +171,6 @@
   line-height: 1.1;
 }
 
-.categories__arrows {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.categories__arrows .icon-btn {
-  border-radius: 50%;
-}
-
-.categories__arrows .icon-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
 .categories__row {
   display: flex;
   gap: clamp(0.75rem, 0.4rem + 1vw, 1.5rem);
@@ -255,10 +241,6 @@
 }
 
 @media (max-width: 760px) {
-  .categories__arrows {
-    display: none;
-  }
-
   .category-circle {
     width: 84px;
   }
@@ -272,18 +254,96 @@
   }
 }
 
-/* Thin line between occasions and item categories */
-.categories__row .categories__divider {
-  align-self: flex-start;
-  width: 1px;
-  height: 96px;
-  margin-inline: 0.25rem;
-  background: var(--rule);
-  scroll-snap-align: none;
+/* Items | Events switch */
+.categories__tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
+.switch {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--mist);
+}
+
+.switch__option {
+  min-height: 38px;
+  padding: 0 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.switch__option:hover {
+  color: var(--ink);
+}
+
+.switch__option.is-on {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgb(31 30 27 / 0.08), 0 2px 8px -2px rgb(31 30 27 / 0.12);
+}
+
+.categories__row {
+  animation: row-in 280ms var(--ease) both;
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Arrows sit on the left and right ends of the circle row */
+.categories__scroller {
+  position: relative;
+}
+
+.categories__arrow {
+  position: absolute;
+  top: 54px; /* centre of the circles */
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1.15rem;
+  box-shadow: 0 6px 18px -6px rgb(31 30 27 / 0.3);
+  transform: translateY(-50%);
+  transition: opacity var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.categories__arrow:hover {
+  border-color: var(--ink);
+}
+
+.categories__arrow--left {
+  left: -22px;
+}
+
+.categories__arrow--right {
+  right: -22px;
+}
+
+.categories__arrow.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Phones: swipe only */
 @media (max-width: 760px) {
-  .categories__row .categories__divider {
-    height: 76px;
+  .categories__arrow {
+    display: none;
   }
 }
