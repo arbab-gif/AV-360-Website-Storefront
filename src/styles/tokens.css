@@ -5,7 +5,7 @@
   square-cut photographs, hairline rules instead of rounded cards.
 */
 :root {
-  /* Palette — white page, charcoal ink, AP360 blue */
+  /* Palette — white page, charcoal ink, deep teal */
   --linen: #ffffff;
   --paper: #ffffff;
   --mist: #f5f3ee;
@@ -13,9 +13,9 @@
   --rule: #e0dbd1;
   --ink: #1f1e1b;
   --ink-soft: #57524a;
-  --primary: #00b2e3; /* brand primary */
-  --primary-hover: #009dca;
-  --primary-ink: #00739a; /* primary as text on white (AA contrast) */
+  --primary: #215e61; /* brand primary */
+  --primary-hover: #1a4b4e;
+  --primary-ink: #215e61; /* primary as text on white */
   --on-primary: #ffffff; /* text and icons on primary fills */
   --night: #10181c; /* dark section ground */
   --night-card: #18232a;
@@ -55,5 +55,12 @@
 @media (max-width: 960px) {
   :root {
     --nav-h: 64px;
+  }
+}
+
+/* Phones: menu bar has a second row for search */
+@media (max-width: 700px) {
+  :root {
+    --nav-h: 118px;
   }
 }

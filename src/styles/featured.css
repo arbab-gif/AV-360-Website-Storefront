@@ -1,62 +1,36 @@
-.featured {
-  padding-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+/* ================= Items for the selected category ================= */
+
+.items {
+  padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem) clamp(3rem, 2rem + 4vw, 5rem);
 }
 
-.featured__head {
-  margin-bottom: 2.25rem;
-}
-
-.featured__context {
+.items__head {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 1rem;
-  margin-bottom: 1.75rem;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.items__count {
   font-size: var(--fs-small);
   color: var(--ink-soft);
 }
 
-.featured__context strong {
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--ink);
-}
-
-.context-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-height: 36px;
-  padding: 0.3rem 0.75rem;
-  border: 1px solid var(--primary);
-  border-radius: var(--cut);
-  background: transparent;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--primary-ink);
-  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-
-.context-chip:hover {
-  background: var(--primary);
-  color: var(--on-primary);
-}
-
-/* Product grid: catalogue plates separated by hairlines */
-.featured__grid {
+.items__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1.75rem, 1rem + 1.6vw, 2.75rem) clamp(1rem, 0.6rem + 1vw, 1.6rem);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(1.25rem, 0.8rem + 1.2vw, 2rem) clamp(0.75rem, 0.5rem + 0.8vw, 1.25rem);
 }
 
-.featured__cell {
-  animation: plate-in 380ms var(--ease) both;
-  animation-delay: calc(min(var(--d), 8) * 35ms);
+.items__cell {
+  animation: item-in 320ms var(--ease) both;
+  animation-delay: calc(min(var(--d), 10) * 25ms);
 }
 
-@keyframes plate-in {
+@keyframes item-in {
   from {
     opacity: 0;
   }
@@ -70,7 +44,7 @@
 
 .item-card__media {
   position: relative;
-  aspect-ratio: 4 / 4.6;
+  aspect-ratio: 1 / 1.1;
   overflow: hidden;
   border-radius: var(--round);
   background: var(--stone);
@@ -84,30 +58,26 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-top: 1rem;
-  border-top: 0;
+  padding-top: 0.8rem;
 }
 
 .item-card__category {
+  font-size: 0.8rem;
   color: var(--primary-ink);
 }
 
 .item-card__name {
-  margin-top: 0.35rem;
+  margin-top: 0.2rem;
   font-family: var(--display);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 400;
-  font-variation-settings: 'opsz' 48;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  line-height: 1.15;
 }
 
 .item-card__detail {
-  margin-top: 0.3rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--rule);
-  font-size: var(--fs-small);
+  margin-top: 0.2rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.85rem;
   color: var(--ink-soft);
 }
 
@@ -115,15 +85,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   width: 100%;
-  min-height: 46px;
+  min-height: 44px;
   margin-top: auto;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid var(--ink);
   border-radius: var(--cut);
   background: transparent;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
   transition:
     background-color var(--dur) var(--ease),
@@ -132,7 +102,7 @@
 }
 
 .wish-toggle__icon {
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .wish-toggle:hover {
@@ -148,77 +118,55 @@
 
 .wish-toggle.is-added:hover {
   background: var(--primary-hover);
-  border-color: var(--primary-ink);
+  border-color: var(--primary-hover);
 }
 
-.featured__empty {
-  display: grid;
-  justify-items: center;
-  gap: 1rem;
-  padding: 4rem 1rem;
-  border: 1px dashed var(--rule);
-  text-align: center;
-  color: var(--ink-soft);
-}
-
-.featured__note {
-  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--ink);
+.items__note {
+  margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
   font-size: var(--fs-small);
   color: var(--ink-soft);
 }
 
 @media (max-width: 1199px) {
-  .featured__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .items__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 899px) {
-  .featured__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .items__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 559px) {
-  .featured__grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .item-card {
-    display: grid;
-    grid-template-columns: 40% minmax(0, 1fr);
-    gap: 1rem;
-  }
-
-  .item-card__media {
-    aspect-ratio: auto;
-    min-height: 170px;
-  }
-
-  .item-card__media > .smart-img {
-    position: absolute;
-    inset: 0;
-  }
-
-  .item-card__body {
-    padding-top: 0;
+/* Phones: two per row so more items fit on screen */
+@media (max-width: 599px) {
+  .items__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .item-card__name {
-    font-size: 1.3rem;
+    font-size: 1.08rem;
   }
 
   .item-card__detail {
-    margin-bottom: 0.8rem;
-    padding-bottom: 0;
-    border-bottom: 0;
+    font-size: 0.78rem;
   }
 
   .wish-toggle {
-    font-size: 0.82rem;
-    padding-inline: 0.5rem;
+    font-size: 0.8rem;
+    padding-inline: 0.4rem;
   }
+}
+
+.items__empty {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: var(--round);
+  background: var(--mist);
+  color: var(--ink-soft);
 }

@@ -79,7 +79,7 @@ export default function WishlistPanel() {
 
   const explore = () => {
     close();
-    setTimeout(() => scrollToSection('rentals'), 60);
+    setTimeout(() => scrollToSection('categories'), 60);
   };
 
   if (!mounted) return null;
@@ -89,7 +89,7 @@ export default function WishlistPanel() {
 
   return (
     <div
-      className={`drawer ${isOpen ? 'is-open' : 'is-closing'} ${view === 'quote' ? 'is-full' : ''}`}
+      className={`drawer ${isOpen ? 'is-open' : 'is-closing'}`}
       onKeyDown={onKeyDown}
     >
       <div className="drawer__scrim" onClick={close} aria-hidden="true" />
@@ -141,7 +141,7 @@ export default function WishlistPanel() {
               </span>
               <p className="drawer__empty-title">Your event wishlist is empty.</p>
               <button type="button" className="btn btn--primary" onClick={explore}>
-                Explore Rentals
+                Browse Items
               </button>
             </div>
           ) : (

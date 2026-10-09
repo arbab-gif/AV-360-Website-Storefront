@@ -1,50 +1,45 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+import Banner from './components/Banner.jsx';
 import CategorySection from './components/CategorySection.jsx';
-import EventTypeSection from './components/EventTypeSection.jsx';
 import FeaturedItems from './components/FeaturedItems.jsx';
-import Hero from './components/Hero.jsx';
 import Navigation from './components/Navigation.jsx';
 import WishlistPanel from './components/WishlistPanel.jsx';
 import { useWishlist } from './context/WishlistContext.jsx';
-import { scrollToSection } from './lib/scroll.js';
+import { prefersReducedMotion } from './lib/scroll.js';
 
 export default function App() {
   const [category, setCategory] = useState('all');
-  const [eventType, setEventType] = useState(null);
+  const [query, setQuery] = useState('');
   const { announcement } = useWishlist();
 
-  const pickCategory = useCallback((id) => {
-    setEventType(null);
-    // Clicking the selected circle again shows every item.
-    setCategory((current) => (current === id ? 'all' : id));
-    scrollToSection('featured');
-  }, []);
+  // Searching looks through every item; picking a circle clears the search.
+  const onQuery = (value) => {
+    if (!query && value) {
+      setCategory('all');
+      // Bring the results into view if they're below the screen.
+      const items = document.getElementById('items');
+      if (items && items.getBoundingClientRect().top > window.innerHeight * 0.6) {
+        items.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+    setQuery(value);
+  };
 
-  const pickEvent = useCallback((id) => {
-    setCategory('all');
-    setEventType(id);
-    scrollToSection('featured');
-  }, []);
+  const onSelect = (id) => {
+    setQuery('');
+    setCategory(id);
+  };
 
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <Navigation />
+      <Navigation query={query} onQuery={onQuery} />
       <main id="main">
-        <Hero />
-        <CategorySection selected={eventType ? null : category} onSelect={pickCategory} />
-        <FeaturedItems
-          category={category}
-          eventType={eventType}
-          onClearEvent={() => setEventType(null)}
-          onClearAll={() => {
-            setEventType(null);
-            setCategory('all');
-          }}
-        />
-        <EventTypeSection onSelect={pickEvent} />
+        <Banner />
+        <CategorySection selected={query ? null : category} onSelect={onSelect} />
+        <FeaturedItems category={category} query={query} onClear={() => onSelect('all')} />
       </main>
       <WishlistPanel />
       <p className="sr-only" role="status" aria-live="polite">

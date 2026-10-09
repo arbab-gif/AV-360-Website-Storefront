@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { itemById } from '../data/catalog.js';
 import { EVENT_TYPES, buildQuote, sendQuote } from '../lib/quote.js';
-import SmartImage from './SmartImage.jsx';
 
 const EMPTY = { name: '', email: '', phone: '', eventType: '', date: '', guests: '', location: '', notes: '' };
 
@@ -80,30 +78,12 @@ export default function QuoteForm({ entries, onSent, onBack }) {
 
   return (
     <form className="quote" onSubmit={submit} noValidate>
-      <aside className="quote__items" aria-labelledby="quote-items-title">
-        <h3 id="quote-items-title" className="quote__items-title">
-          Your items
-        </h3>
-        <p className="quote__items-count">
-          {entries.length} {entries.length === 1 ? 'item' : 'items'}, {pieces} {pieces === 1 ? 'piece' : 'pieces'}
+      {/* Short summary only; the full list is one tap away in the wishlist. */}
+      <aside className="quote__items" aria-label="Your items">
+        <p className="quote__items-summary">
+          <strong>Your items:</strong> {entries.length} {entries.length === 1 ? 'item' : 'items'}, {pieces}{' '}
+          {pieces === 1 ? 'piece' : 'pieces'}
         </p>
-        <ul className="quote__items-list">
-          {entries.map(({ id, qty }) => {
-            const item = itemById[id];
-            return (
-              <li key={id}>
-                <span className="quote__items-thumb">
-                  <SmartImage id={item.image} alt="" ratio={1} widths={[120]} sizes="56px" />
-                </span>
-                <span className="quote__items-text">
-                  <span className="quote__items-name">{item.name}</span>
-                  <span className="quote__items-option">{item.detail}</span>
-                </span>
-                <span className="quote__items-qty">× {qty}</span>
-              </li>
-            );
-          })}
-        </ul>
         <button type="button" className="quote__edit" onClick={onBack}>
           Edit items
         </button>

@@ -68,6 +68,31 @@ export function MinusIcon(props) {
   );
 }
 
+export function PauseIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 6v12M15 6v12" />
+    </svg>
+  );
+}
+
+export function PlayIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M8 5.5v13l10.5-6.5L8 5.5Z" />
+    </svg>
+  );
+}
+
+export function SearchIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m20 20-4.2-4.2" />
+    </svg>
+  );
+}
+
 export function CheckIcon(props) {
   return (
     <svg {...base} {...props}>

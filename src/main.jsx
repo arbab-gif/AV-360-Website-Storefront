@@ -5,7 +5,6 @@ import { WishlistProvider } from './context/WishlistContext.jsx';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/navigation.css';
-import './styles/hero.css';
 import './styles/sections.css';
 import './styles/featured.css';
 import './styles/wishlist.css';
